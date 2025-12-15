@@ -6,177 +6,197 @@
 <title>TIMO CLUB</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
 }
 
-/* خلفية عامة */
-body {
-  background: #000;
-  color: #fff;
+body{
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
 }
 
-/* صفحة الاختيار */
-#gender-gate {
-  height: 100vh;
-  background: url("images/hero-female.jpg") center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ===== اختيار النوع ===== */
+.gender-section{
+    position:relative;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-.gate-overlay {
-  background: rgba(0,0,0,0.55);
-  padding: 40px;
-  border-radius: 16px;
-  text-align: center;
+.gender-bg{
+    position:absolute;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+    filter:brightness(0.6);
 }
 
-.gate-overlay h2 {
-  margin-bottom: 20px;
-  font-size: 26px;
+.gender-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
 }
 
-.gate-buttons button {
-  font-size: 20px;
-  padding: 14px 30px;
-  margin: 0 10px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  color: #fff;
+.gender-content h2{
+    margin-bottom:20px;
+    font-size:28px;
 }
 
-.btn-male {
-  background: linear-gradient(135deg,#3a7bd5,#00d2ff);
+.gender-buttons{
+    display:flex;
+    gap:20px;
+    justify-content:center;
 }
 
-.btn-female {
-  background: linear-gradient(135deg,#ff758c,#ff7eb3);
+.gender-buttons button{
+    padding:14px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:#7b6cff;
+    color:#fff;
+    transition:.3s;
 }
 
-/* محتوى الموقع */
-#siteContent {
-  display: none;
+.gender-buttons button:hover{
+    transform:scale(1.05);
+    background:#9a8cff;
 }
 
-/* صورة الهيرو */
-.hero img {
-  width: 100%;
-  height: 75vh;
-  object-fit: cover;
-  display: block;
+/* ===== الاشتراكات ===== */
+.subscriptions{
+    padding:60px 20px;
+    text-align:center;
+    background:#000;
 }
 
-/* محتوى تحت الصورة */
-.hero-content {
-  text-align: center;
-  padding: 30px 20px;
+.subscriptions h1{
+    margin-bottom:10px;
 }
 
-.hero-content h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
+.subscriptions p{
+    opacity:.8;
+    margin-bottom:40px;
 }
 
-/* الاشتراكات */
-.subscriptions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  padding: 30px;
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    max-width:1100px;
+    margin:auto;
 }
 
-.plan {
-  background: #111;
-  border-radius: 16px;
-  padding: 20px;
-  width: 180px;
-  text-align: center;
-  border: 1px solid #333;
+.card{
+    background:#111;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 0 20px rgba(0,0,0,.6);
 }
 
-.plan h3 {
-  margin-bottom: 10px;
+.card h3{
+    margin-bottom:10px;
 }
 
-.plan button {
-  margin-top: 10px;
-  padding: 10px;
-  width: 100%;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  background: #6c63ff;
-  color: #fff;
+.card .price{
+    font-size:22px;
+    margin:15px 0;
+    color:#9a8cff;
+}
+
+.card a{
+    display:block;
+    margin-top:15px;
+    padding:12px;
+    background:#7b6cff;
+    color:#fff;
+    border-radius:10px;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.card a:hover{
+    background:#9a8cff;
 }
 </style>
 </head>
 
 <body>
 
-<!-- صفحة الاختيار -->
-<div id="gender-gate">
-  <div class="gate-overlay">
-    <h2>اختر</h2>
-    <div class="gate-buttons">
-      <button class="btn-male" onclick="enterSite('male')">ذكر</button>
-      <button class="btn-female" onclick="enterSite('female')">أنثى</button>
+<!-- ===== صفحة الاختيار ===== -->
+<section class="gender-section" id="genderSection">
+    <div class="gender-bg" id="genderBg"></div>
+
+    <div class="gender-content">
+        <h2>اختر</h2>
+        <div class="gender-buttons">
+            <button onclick="selectGender('male')">ذكر</button>
+            <button onclick="selectGender('female')">أنثى</button>
+        </div>
     </div>
-  </div>
-</div>
+</section>
 
-<!-- محتوى الموقع -->
-<div id="siteContent">
-  <div class="hero">
-    <img id="heroImage" src="" alt="TIMO CLUB">
-  </div>
-
-  <div class="hero-content">
+<!-- ===== الاشتراكات ===== -->
+<section class="subscriptions" id="subs">
     <h1>TIMO CLUB</h1>
     <p>أهلاً بيك في TIMO CLUB</p>
-  </div>
 
-  <div class="subscriptions">
-    <div class="plan">
-      <h3>شهر</h3>
-      <p>30 يوم</p>
-      <button>اشترك</button>
+    <div class="cards">
+        <div class="card">
+            <h3>شهر</h3>
+            <div class="price">865 جنيه</div>
+            <a href="https://wa.me/201034381180?text=عايز اشتراك شهر">اشترك</a>
+        </div>
+
+        <div class="card">
+            <h3>شهرين</h3>
+            <div class="price">1450 جنيه</div>
+            <a href="https://wa.me/201034381180?text=عايز اشتراك شهرين">اشترك</a>
+        </div>
+
+        <div class="card">
+            <h3>3 شهور</h3>
+            <div class="price">2050 جنيه</div>
+            <a href="https://wa.me/201034381180?text=عايز اشتراك 3 شهور">اشترك</a>
+        </div>
+
+        <div class="card">
+            <h3>5 شهور</h3>
+            <div class="price">2500 جنيه</div>
+            <a href="https://wa.me/201034381180?text=عايز اشتراك 5 شهور">اشترك</a>
+        </div>
+
+        <div class="card">
+            <h3>6 شهور</h3>
+            <div class="price">3650 جنيه</div>
+            <a href="https://wa.me/201034381180?text=عايز اشتراك 6 شهور">اشترك</a>
+        </div>
+
+        <div class="card">
+            <h3>12 شهر</h3>
+            <div class="price">6895 جنيه</div>
+            <a href="https://wa.me/201034381180?text=عايز اشتراك سنة">اشترك</a>
+        </div>
     </div>
-    <div class="plan">
-      <h3>3 شهور</h3>
-      <p>90 يوم</p>
-      <button>اشترك</button>
-    </div>
-    <div class="plan">
-      <h3>6 شهور</h3>
-      <p>180 يوم</p>
-      <button>اشترك</button>
-    </div>
-    <div class="plan">
-      <h3>12 شهر</h3>
-      <p>سنة كاملة</p>
-      <button>اشترك</button>
-    </div>
-  </div>
-</div>
+</section>
 
 <script>
-function enterSite(type) {
-  document.getElementById("gender-gate").style.display = "none";
-  document.getElementById("siteContent").style.display = "block";
+function selectGender(type){
+    const bg = document.getElementById("genderBg");
 
-  const heroImage = document.getElementById("heroImage");
+    if(type === "female"){
+        bg.style.backgroundImage = "url('hero-female.jpg')";
+    }else{
+        bg.style.backgroundImage = "url('hero-male.jpg')";
+    }
 
-  if (type === "male") {
-    heroImage.src = "images/hero-male.jpg";
-  } else {
-    heroImage.src = "images/hero-female.jpg";
-  }
+    document.getElementById("subs").scrollIntoView({behavior:"smooth"});
 }
 </script>
 
