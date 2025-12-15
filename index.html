@@ -27,9 +27,10 @@ body {
   width: 100%;
   min-height: 100vh;
 
+  /* خلفية افتراضية (صورة الأنثى) */
   background:
     linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-    url("images/hero-male.jpg");
+    url("images/hero-female.jpg");
 
   background-size: cover;
   background-position: center;
@@ -94,7 +95,7 @@ body {
 
 .hero img {
   width: 100%;
-  height: 80vh; /* 👈 أكبر سيكا */
+  height: 80vh;
   object-fit: cover;
   display: block;
 }
@@ -122,7 +123,11 @@ p {
 <div id="gender-gate">
   <div class="gate-box">
     <h2>اختر النوع</h2>
+
+    <!-- ذكر -->
     <button class="btn-male" onclick="enterSite('male')">ذكر</button>
+
+    <!-- أنثى -->
     <button class="btn-female" onclick="enterSite('female')">أنثى</button>
   </div>
 </div>
@@ -130,14 +135,15 @@ p {
 <!-- محتوى الموقع -->
 <div id="siteContent">
   <div class="hero">
-    <img id="heroImage" src="images/hero-male.jpg" alt="TIMO CLUB">
+    <!-- صورة افتراضية -->
+    <img id="heroImage" src="images/hero-female.jpg" alt="TIMO CLUB">
   </div>
 
   <div class="content">
     <h1>TIMO CLUB EGYPT</h1>
     <p>مرحباً بك في TIMO CLUB</p>
     <p>خدمة عملاء رسمية لتفعيل الاشتراكات</p>
-    <p>خدمة 24 ساعة</p>
+    <p>خدمة 24 ساعة لتذويدكم ب جميع المعلومات</p>
   </div>
 </div>
 
@@ -146,9 +152,12 @@ function enterSite(type) {
   document.getElementById("gender-gate").style.display = "none";
   document.getElementById("siteContent").style.display = "block";
 
-  if (type === "female") {
+  /* 👇 التبديل هنا */
+  if (type === "male") {
+    // لو اختار ذكر → صورة أنثى
     document.getElementById("heroImage").src = "images/hero-female.jpg";
   } else {
+    // لو اختار أنثى → صورة ذكر
     document.getElementById("heroImage").src = "images/hero-male.jpg";
   }
 
