@@ -1,135 +1,149 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>TIMO CLUB EGYPT</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>TIMO CLUB EGYPT</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    /* =====================
-       شاشة الاختيار
-    ===================== */
-    #gender-gate {
-      position: fixed;
-      inset: 0;
-      background:
-        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url("images/hero-male.jpg");
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: #fff;
+}
 
-    .gate-box {
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(12px);
-      padding: 35px 25px;
-      border-radius: 20px;
-      text-align: center;
-      width: 300px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    }
+/* =====================
+   شاشة الاختيار
+===================== */
+#gender-gate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
 
-    .gate-box h2 {
-      margin-bottom: 25px;
-      font-size: 22px;
-    }
+  background:
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+    url("images/hero-male.jpg");
 
-    .gate-box button {
-      width: 100%;
-      padding: 14px;
-      margin: 10px 0;
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      border-radius: 14px;
-      color: #fff;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+  background-size: cover;
+  background-position: center;
 
-    .btn-male {
-      background: linear-gradient(135deg, #6a5acd, #8a7cff);
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
 
-    .btn-female {
-      background: linear-gradient(135deg, #ff5f8f, #ff87b2);
-    }
+.gate-box {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  padding: 30px 25px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 320px;
+  text-align: center;
+}
 
-    .gate-box button:hover {
-      transform: scale(1.05);
-    }
+.gate-box h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
 
-    /* =====================
-       محتوى الموقع
-    ===================== */
-    #siteContent {
-      display: none;
-      text-align: center;
-    }
+.gate-box button {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 14px;
+  color: #fff;
+  cursor: pointer;
+}
 
-    .hero img {
-      width: 100%;
-      max-height: 350px;
-      object-fit: cover;
-    }
+.btn-male {
+  background: linear-gradient(135deg, #6a5acd, #8a7cff);
+}
 
-    h1 {
-      margin: 20px 0 10px;
-    }
+.btn-female {
+  background: linear-gradient(135deg, #ff5f8f, #ff87b2);
+}
 
-    p {
-      opacity: 0.85;
-    }
-  </style>
+/* =====================
+   محتوى الموقع
+===================== */
+#siteContent {
+  display: none;
+  background: #000;
+}
+
+.hero img {
+  width: 100%;
+  height: 45vh;
+  object-fit: cover;
+  display: block;
+}
+
+.content {
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin: 15px 0 10px;
+}
+
+p {
+  opacity: 0.85;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- شاشة الاختيار -->
-  <div id="gender-gate">
-    <div class="gate-box">
-      <h2>اختر النوع</h2>
-      <button class="btn-male" onclick="enterSite('male')">ذكر</button>
-      <button class="btn-female" onclick="enterSite('female')">أنثى</button>
-    </div>
+<!-- شاشة الاختيار -->
+<div id="gender-gate">
+  <div class="gate-box">
+    <h2>اختر النوع</h2>
+    <button class="btn-male" onclick="enterSite('male')">ذكر</button>
+    <button class="btn-female" onclick="enterSite('female')">أنثى</button>
+  </div>
+</div>
+
+<!-- الموقع -->
+<div id="siteContent">
+  <div class="hero">
+    <img id="heroImage" src="images/hero-male.jpg" alt="TIMO CLUB">
   </div>
 
-  <!-- الموقع -->
-  <div id="siteContent">
-    <div class="hero">
-      <img id="heroImage" src="images/hero-male.jpg" alt="TIMO CLUB">
-    </div>
-
+  <div class="content">
     <h1>TIMO CLUB EGYPT</h1>
     <p>مرحباً بك في TIMO CLUB</p>
     <p>خدمة عملاء رسمية لتفعيل الاشتراكات</p>
     <p>خدمة 24 ساعة</p>
   </div>
+</div>
 
-  <!-- JavaScript -->
-  <script>
-    function enterSite(type) {
-      document.getElementById("gender-gate").style.display = "none";
-      document.getElementById("siteContent").style.display = "block";
+<script>
+function enterSite(type) {
+  document.getElementById("gender-gate").style.display = "none";
+  document.getElementById("siteContent").style.display = "block";
 
-      if (type === "male") {
-        document.getElementById("heroImage").src = "images/hero-male.jpg";
-      } else {
-        document.getElementById("heroImage").src = "images/hero-female.jpg";
-      }
-    }
-  </script>
+  if (type === "female") {
+    document.getElementById("heroImage").src = "images/hero-female.jpg";
+  } else {
+    document.getElementById("heroImage").src = "images/hero-male.jpg";
+  }
+
+  window.scrollTo(0, 0);
+}
+</script>
 
 </body>
 </html>
