@@ -1,98 +1,96 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-<meta charset="UTF-8">
-<title>TIMO CLUB</title>
+  <meta charset="UTF-8">
+  <title>TIMO CLUB</title>
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #07172a;
+      color: white;
+      text-align: center;
+    }
 
-/* شاشة الاختيار */
-#gender-gate {
-  position: fixed;
-  inset: 0;
-  background: #07172a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    /* شاشة الاختيار */
+    #gender-gate {
+      position: fixed;
+      inset: 0;
+      background: #07172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
 
-.gate-box {
-  background: #1e293b;
-  padding: 40px;
-  border-radius: 20px;
-  width: 95%;
-  max-width: 420px;
-  text-align: center;
-}
+    .gate-box {
+      background: #1e293b;
+      padding: 40px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 420px;
+    }
 
-.gate-box h2 {
-  color: white;
-  margin-bottom: 20px;
-}
+    .gate-box h2 {
+      margin-bottom: 20px;
+    }
 
-.gate-box button {
-  width: 100%;
-  padding: 22px;
-  margin-top: 18px;
-  font-size: 22px;
-  border: none;
-  border-radius: 14px;
-  cursor: pointer;
-  background: #2ec971;
-  font-weight: bold;
-}
+    .gate-box button {
+      width: 100%;
+      padding: 22px;
+      margin-top: 15px;
+      font-size: 22px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      background: #2ec971;
+      font-weight: bold;
+    }
 
-/* محتوى الموقع */
-#siteContent {
-  display: none;
-  text-align: center;
-}
+    /* محتوى الموقع */
+    #siteContent {
+      display: none;
+    }
 
-/* صورة الهيرو */
-.hero img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-</style>
+    /* صورة الهيرو */
+    .hero img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .hero-content {
+      padding: 30px;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- شاشة اختيار النوع -->
-<div id="gender-gate">
-  <div class="gate-box">
-    <h2>اختر النوع</h2>
-    <button onclick="enterSite('male')">👦 ذكر</button>
-    <button onclick="enterSite('female')">👧 أنثى</button>
+  <!-- شاشة الاختيار -->
+  <div id="gender-gate">
+    <div class="gate-box">
+      <h2>اختر النوع</h2>
+      <button onclick="enterSite('male')">👦 ذكر</button>
+      <button onclick="enterSite('female')">👧 أنثى</button>
+    </div>
   </div>
-</div>
 
-<!-- محتوى الموقع -->
-<div id="siteContent">
-  <div class="hero">
-    <img id="heroImage" src="" alt="TIMO CLUB">
+  <!-- محتوى الموقع -->
+  <div id="siteContent">
+    <div class="hero">
+      <img id="heroImage" src="" alt="TIMO CLUB">
+    </div>
+
+    <div class="hero-content">
+      <h1>TIMO CLUB</h1>
+      <p>أهلاً بيك في الموقع</p>
+    </div>
   </div>
-</div>
 
-<script>
-function enterSite(type) {
-  document.getElementById("gender-gate").style.display = "none";
-  document.getElementById("siteContent").style.display = "block";
+  <script>
+    function enterSite(type) {
+      document.getElementById("gender-gate").style.display = "none";
+      document.getElementById("siteContent").style.display =
 
-  const heroImage = document.getElementById("heroImage");
-
-  if (type === "male") {
-    heroImage.src = "images/male.jpg";
-  } else {
-    heroImage.src = "images/female.jpg";
-  }
-}
-</script>
-
-</body>
-</html>
