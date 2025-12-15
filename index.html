@@ -6,146 +6,185 @@
 <title>TIMO CLUB</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Tahoma}
+*{box-sizing:border-box;font-family:Arial}
 body{
-  background:#000;
-  color:#fff;
-  text-align:center;
+margin:0;
+background:#000;
+color:#fff;
+text-align:center;
 }
 
-/* ===== شاشة الاختيار ===== */
-#gate{
-  position:fixed;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:20px;
-  background:
-    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-    url("images/female.jpg") center/cover no-repeat;
-  z-index:10;
-}
-#gate h2{font-size:26px}
-.gate-btns button{
-  padding:12px 30px;
-  font-size:18px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-  background:#7b6cff;
-  color:#fff;
-}
-.gate-btns button:hover{opacity:.85}
+.hidden{display:none}
 
-/* ===== الصورة الرئيسية ===== */
+/* اختيار الجنس */
+#genderGate{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:#000;
+}
+
+.gender-btn{
+padding:12px 30px;
+margin:10px;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:#7c6cff;
+color:#fff;
+}
+
+/* الهيرو */
 #hero{
-  display:none;
-  height:70vh;
-  background-size:cover;
-  background-position:center;
+position:relative;
+height:75vh;
+overflow:hidden;
 }
 
-/* ===== المحتوى ===== */
-.content{
-  padding:40px 20px;
+#hero img{
+width:100%;
+height:100%;
+object-fit:cover;
 }
-.content h1{margin-bottom:10px}
+
+#hero::after{
+content:"";
+position:absolute;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.4);
+}
+
+#heroText{
+position:absolute;
+bottom:30px;
+width:100%;
+z-index:2;
+}
+
+#heroText h1{
+margin:0;
+font-size:32px;
+}
+
+/* الاشتراكات */
+#subs{
+padding:40px 20px;
+}
+
 .cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-  max-width:1100px;
-  margin:30px auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+max-width:1000px;
+margin:auto;
 }
+
 .card{
-  background:#111;
-  border-radius:15px;
-  padding:25px;
-  box-shadow:0 0 20px rgba(0,0,0,.5);
+background:#111;
+border-radius:15px;
+padding:20px;
 }
-.card h3{margin-bottom:10px}
-.price{color:#7b6cff;font-size:20px;margin-bottom:15px}
+
+.card h3{
+margin:0 0 10px;
+}
+
+.card p{
+margin:0 0 15px;
+color:#9aa4ff;
+font-size:18px;
+}
+
 .card a{
-  display:block;
-  background:#7b6cff;
-  color:#fff;
-  text-decoration:none;
-  padding:10px;
-  border-radius:10px;
+display:block;
+padding:10px;
+background:#7c6cff;
+border-radius:10px;
+color:#fff;
+text-decoration:none;
 }
-.card a:hover{opacity:.85}
 </style>
 </head>
 
 <body>
 
-<!-- شاشة الاختيار -->
-<div id="gate">
-  <h2>اختر</h2>
-  <div class="gate-btns">
-    <button onclick="enter('male')">ذكر</button>
-    <button onclick="enter('female')">أنثى</button>
-  </div>
+<!-- اختيار الجنس -->
+<div id="genderGate">
+<h2>اختر</h2>
+<button class="gender-btn" onclick="enterSite('male')">ذكر</button>
+<button class="gender-btn" onclick="enterSite('female')">أنثى</button>
 </div>
 
-<!-- الصورة -->
-<div id="hero"></div>
+<!-- الموقع -->
+<div id="site" class="hidden">
 
-<!-- الاشتراكات -->
-<div class="content">
-  <h1>TIMO CLUB</h1>
-  <p>أهلاً بيك في TIMO CLUB</p>
+<div id="hero">
+<img id="heroImg" src="">
+<div id="heroText">
+<h1>TIMO CLUB</h1>
+<p>أهلاً بك في TIMO CLUB</p>
+</div>
+</div>
 
-  <div class="cards">
-    <div class="card">
-      <h3>شهر</h3>
-      <div class="price">865 جنيه</div>
-      <a href="https://wa.me/201034381180">اشترك</a>
-    </div>
+<section id="subs">
+<div class="cards">
 
-    <div class="card">
-      <h3>شهرين</h3>
-      <div class="price">1450 جنيه</div>
-      <a href="https://wa.me/201034381180">اشترك</a>
-    </div>
+<div class="card">
+<h3>شهر</h3>
+<p>865 جنيه</p>
+<a href="https://wa.me/201034381180?text=اشتراك%20شهر%20-%20865%20جنيه" target="_blank">اشترك</a>
+</div>
 
-    <div class="card">
-      <h3>3 شهور</h3>
-      <div class="price">2050 جنيه</div>
-      <a href="https://wa.me/201034381180">اشترك</a>
-    </div>
+<div class="card">
+<h3>شهرين</h3>
+<p>1450 جنيه</p>
+<a href="https://wa.me/201034381180?text=اشتراك%20شهرين%20-%201450%20جنيه" target="_blank">اشترك</a>
+</div>
 
-    <div class="card">
-      <h3>5 شهور</h3>
-      <div class="price">2500 جنيه</div>
-      <a href="https://wa.me/201034381180">اشترك</a>
-    </div>
+<div class="card">
+<h3>3 شهور</h3>
+<p>2050 جنيه</p>
+<a href="https://wa.me/201034381180?text=اشتراك%203%20شهور%20-%202050%20جنيه" target="_blank">اشترك</a>
+</div>
 
-    <div class="card">
-      <h3>6 شهور</h3>
-      <div class="price">3650 جنيه</div>
-      <a href="https://wa.me/201034381180">اشترك</a>
-    </div>
+<div class="card">
+<h3>5 شهور</h3>
+<p>2500 جنيه</p>
+<a href="https://wa.me/201034381180?text=اشتراك%205%20شهور%20-%202500%20جنيه" target="_blank">اشترك</a>
+</div>
 
-    <div class="card">
-      <h3>12 شهر</h3>
-      <div class="price">6895 جنيه</div>
-      <a href="https://wa.me/201034381180">اشترك</a>
-    </div>
-  </div>
+<div class="card">
+<h3>6 شهور</h3>
+<p>3650 جنيه</p>
+<a href="https://wa.me/201034381180?text=اشتراك%206%20شهور%20-%203650%20جنيه" target="_blank">اشترك</a>
+</div>
+
+<div class="card">
+<h3>12 شهر</h3>
+<p>6895 جنيه</p>
+<a href="https://wa.me/201034381180?text=اشتراك%2012%20شهر%20-%206895%20جنيه" target="_blank">اشترك</a>
+</div>
+
+</div>
+</section>
+
 </div>
 
 <script>
-function enter(type){
-  document.getElementById("gate").style.display="none";
-  const hero=document.getElementById("hero");
-  hero.style.display="block";
-  hero.style.backgroundImage=
-    type==="male"
-    ? "url('images/male.jpg')"
-    : "url('images/female.jpg')";
+function enterSite(type){
+document.getElementById("genderGate").style.display="none";
+document.getElementById("site").classList.remove("hidden");
+
+const img=document.getElementById("heroImg");
+if(type==="male"){
+img.src="images/hero-male.jpg";
+}else{
+img.src="images/hero-female.jpg";
+}
 }
 </script>
 
