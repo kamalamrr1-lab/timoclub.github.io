@@ -88,9 +88,18 @@
       <p>أهلاً بيك في الموقع</p>
     </div>
   </div>
+<script>
+function enterSite(type) {
+  document.getElementById("gender-gate").style.display = "none";
+  document.getElementById("siteContent").style.display = "block";
 
-  <script>
-    function enterSite(type) {
-      document.getElementById("gender-gate").style.display = "none";
-      document.getElementById("siteContent").style.display =
+  const heroImage = document.getElementById("heroImage");
+
+  if (type === "male") {
+    heroImage.src = "images/hero-male.jpg";
+  } else {
+    heroImage.src = "images/hero-female.jpg";
+  }
+}
+</script>
 
