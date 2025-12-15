@@ -1,114 +1,78 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <title> TIMO CLUB</title>
-    <style> .hero-img { #gender-gate {
+<meta charset="UTF-8">
+<title>TIMO CLUB</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* شاشة الاختيار */
+#gender-gate {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #0b132b;
+  inset: 0;
+  background: #07172a;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
 }
 
 .gate-box {
-  background: #1c2541;
+  background: #10253d;
   padding: 30px;
   border-radius: 15px;
+  width: 280px;
   text-align: center;
-  width: 90%;
-  max-width: 350px;
-}
-
-.gate-box h2 {
-  color: #fff;
-  margin-bottom: 20px;
+  color: white;
 }
 
 .gate-box button {
   width: 100%;
   padding: 15px;
-  margin: 10px 0;
+  margin-top: 15px;
   font-size: 18px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  background: #2ecc71;
-  color: #000;
+  background: #2ec971;
   font-weight: bold;
 }
 
-  width: 100%;
- max-width: 180px;
-  height: auto;
-  border-radius: 15px;
-  margin-bottom: 20px;
+/* محتوى الموقع */
+#siteContent {
+  display: none;
+  text-align: center;
+  padding: 50px;
 }
+</style>
+</head>
 
-        body { <!-- Gender Gate -->
+<body>
+
+<!-- شاشة اختيار ذكر / أنثى -->
 <div id="gender-gate">
   <div class="gate-box">
-    <h2>اختر النوع للدخول</h2>
-
+    <h2>اختر النوع</h2>
     <button onclick="enterSite('male')">👨 ذكر</button>
     <button onclick="enterSite('female')">👩 أنثى</button>
   </div>
 </div>
 
-            background: #0f172a;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 40px;
-        }
-        .card {
-            background: #1e293b;
-            padding: 30px;
-            border-radius: 15px;
-            max-width: 400px;
-            margin: auto;
-        }
-        a {
-            display: block;
-            background: #22c55e;
-            color: black;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style> 
-</head>
-<body>
-<img src="images/timo-couple.jpg.jpeg" alt="TIMO CLUB" class="hero-img">
+<!-- محتوى الموقع -->
+<div id="siteContent">
+  <h1>أهلاً بيك في TIMO CLUB</h1>
+  <p>تم الدخول للموقع بنجاح</p>
+</div>
 
-<div class="card">
-  <h1>TIMO CLUB</h1>
-  <p>مكالمات • رسائل • تواصل</p>
-<h3>الاشتراكات</h3>
-
-<a href="https://wa.me/201034381180?text=اشتراك%20شهر">اشتراك شهر</a>
-<a href="https://wa.me/201034381180?text=اشتراك%20شهرين">اشتراك شهرين</a>
-<a href="https://wa.me/201034381180?text=اشتراك%203%20شهور">اشتراك 3 شهور</a>
-<a href="https://wa.me/201034381180?text=اشتراك%205%20شهور">اشتراك 5 شهور</a>
-<a href="https://wa.me/201034381180?text=اشتراك%206%20شهور">اشتراك 6 شهور</a>
-<a href="https://wa.me/201034381180?text=اشتراك%2012%20شهر">اشتراك 12 شهر</a>
-
-<p style="font-size:12px;opacity:0.7;">
-لكل حساب اشتراك واحد فقط
-</p>
-
-    <a href="https://wa.me/01034381180">واتساب</a>
-<a href="https://wa.me/01158753653">واتساب رقم 2</a> 
-</div> <a href="mailto:tiimoclub@gmail.com">📧 الشكاوي (Gmail)</a>
-
+<script>
+function enterSite(gender) {
+  document.getElementById("gender-gate").style.display = "none";
+  document.getElementById("siteContent").style.display = "block";
+}
+</script>
 
 </body>
 </html>
-
