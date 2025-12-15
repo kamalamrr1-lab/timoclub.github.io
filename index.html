@@ -7,6 +7,7 @@
 
 <style>
 *{box-sizing:border-box;font-family:Arial}
+
 body{
 margin:0;
 background:#000;
@@ -14,7 +15,7 @@ color:#fff;
 text-align:center;
 }
 
-/* شاشة الاختيار */
+/* ===== شاشة الاختيار ===== */
 #genderGate{
 min-height:100vh;
 display:flex;
@@ -25,7 +26,6 @@ position:relative;
 overflow:hidden;
 }
 
-/* الخلفية */
 #genderBg{
 position:absolute;
 top:0;left:0;
@@ -33,30 +33,20 @@ width:100%;
 height:100%;
 object-fit:cover;
 z-index:-1;
-transition:0.4s;
 }
 
-/* طبقة تغميق */
 #overlay{
 position:absolute;
 top:0;left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.55);
-z-index:0;
+background:rgba(0,0,0,.6);
 }
 
-/* المحتوى */
 #genderContent{
-z-index:1;
+z-index:2;
 }
 
-#genderContent h2{
-margin-bottom:25px;
-font-size:28px;
-}
-
-/* الأزرار */
 .gender-btn{
 width:220px;
 padding:14px;
@@ -67,21 +57,14 @@ border-radius:12px;
 cursor:pointer;
 background:#7c6cff;
 color:#fff;
-transition:0.3s;
 }
 
-.gender-btn:hover{
-background:#9a8cff;
-transform:scale(1.05);
-}
-
-/* الموقع */
+/* ===== الموقع ===== */
 .hidden{display:none}
 
 #hero{
 position:relative;
-height:75vh;
-overflow:hidden;
+height:80vh;
 }
 
 #hero img{
@@ -95,7 +78,7 @@ content:"";
 position:absolute;
 top:0;left:0;
 width:100%;height:100%;
-background:rgba(0,0,0,0.4);
+background:rgba(0,0,0,.45);
 }
 
 #heroText{
@@ -113,7 +96,7 @@ padding:40px 20px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
-max-width:1000px;
+max-width:1100px;
 margin:auto;
 }
 
@@ -132,13 +115,86 @@ background:#7c6cff;
 border-radius:10px;
 color:#fff;
 text-decoration:none;
+margin-top:10px;
+}
+
+/* ===== أزرار الحماية ===== */
+.safety-btn{
+margin:30px auto 10px;
+padding:14px 22px;
+background:#ff4d4d;
+border:none;
+border-radius:12px;
+color:#fff;
+font-size:16px;
+cursor:pointer;
+display:block;
+max-width:320px;
+}
+
+.gmail-btn{
+margin:10px auto;
+padding:12px 22px;
+background:#1abc9c;
+border:none;
+border-radius:12px;
+color:#fff;
+font-size:16px;
+cursor:pointer;
+display:block;
+max-width:320px;
+text-decoration:none;
+}
+
+/* ===== نافذة الحماية ===== */
+#safetyPopup{
+position:fixed;
+top:0;left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.popupContent{
+background:#111;
+padding:30px;
+border-radius:15px;
+max-width:600px;
+width:90%;
+text-align:right;
+}
+
+.popupContent h2{
+color:#ff6b6b;
+margin-bottom:15px;
+}
+
+.popupText{
+max-height:300px;
+overflow-y:auto;
+line-height:1.8;
+color:#ddd;
+margin-bottom:20px;
+}
+
+.popupContent button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#7c6cff;
+color:#fff;
+cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<!-- اختيار الجنس -->
+<!-- ===== اختيار الجنس ===== -->
 <div id="genderGate">
 <img id="genderBg" src="images/hero-male.jpg">
 <div id="overlay"></div>
@@ -156,7 +212,7 @@ onclick="enterSite('female')">أنثى</button>
 </div>
 </div>
 
-<!-- الموقع -->
+<!-- ===== الموقع ===== -->
 <div id="site" class="hidden">
 
 <div id="hero">
@@ -172,42 +228,68 @@ onclick="enterSite('female')">أنثى</button>
 
 <div class="card">
 <h3>شهر</h3><p>865 جنيه</p>
-<a href="https://wa.me/201034381180?text=اشتراك%20شهر">اشترك</a>
+<a href="https://wa.me/201034381180?text=اشتراك شهر">اشترك</a>
 </div>
 
 <div class="card">
 <h3>شهرين</h3><p>1450 جنيه</p>
-<a href="https://wa.me/201034381180?text=اشتراك%20شهرين">اشترك</a>
+<a href="https://wa.me/201034381180?text=اشتراك شهرين">اشترك</a>
 </div>
 
 <div class="card">
 <h3>3 شهور</h3><p>2050 جنيه</p>
-<a href="https://wa.me/201034381180?text=اشتراك%203%20شهور">اشترك</a>
+<a href="https://wa.me/201034381180?text=اشتراك 3 شهور">اشترك</a>
 </div>
 
 <div class="card">
 <h3>5 شهور</h3><p>2500 جنيه</p>
-<a href="https://wa.me/201034381180?text=اشتراك%205%20شهور">اشترك</a>
+<a href="https://wa.me/201034381180?text=اشتراك 5 شهور">اشترك</a>
 </div>
 
 <div class="card">
 <h3>6 شهور</h3><p>3650 جنيه</p>
-<a href="https://wa.me/201034381180?text=اشتراك%206%20شهور">اشترك</a>
+<a href="https://wa.me/201034381180?text=اشتراك 6 شهور">اشترك</a>
 </div>
 
 <div class="card">
 <h3>12 شهر</h3><p>6895 جنيه</p>
-<a href="https://wa.me/201034381180?text=اشتراك%2012%20شهر">اشترك</a>
+<a href="https://wa.me/201034381180?text=اشتراك 12 شهر">اشترك</a>
 </div>
 
 </div>
+
+<!-- زر الحماية -->
+<button class="safety-btn" onclick="openSafety()">
+الحماية من عمليات النصب والاحتيال
+</button>
+
+<!-- زر الجيميل -->
+<a class="tiimoclub@gmail-btn"
+href="mailto:support@timoclub.com?subject=حماية المستهلك">
+حماية المستهلك
+</a>
+
 </section>
+</div>
+
+<!-- نافذة الحماية -->
+<div id="safetyPopup" class="hidden">
+<div class="popupContent">
+<h2>تنويه هام</h2>
+
+<div class="popupText">
+✍️ اكتب هنا رسالة الحماية من النصب والاحتيال كاملة  
+(الاعلان او ترك معلومات الاتصال الخاصه بك الأرشاد بها بمجرد اكتشاف هذا النوع من السلوك سيتم حظره من السكرتير واذا كان جادا فسيتم حظره لا يسمح بمطالبة المستخدمين علي تقديم الهدايا او بيع المعومات الخاصه لتحقيق ارباح علي المنصه بمجرد اكتشاف هذا النوع من السلوك سيتم حظره من قبل السكرتير واذا كان جادا فسيتم حظره تأكد من انك تبلغ من العمر لا يسمح للغير البالغ باستخدام خدمات النظام الأساسي بمجرد اكتشافك سيتم حظر حسابك تاكد من تطابق جنسك مع الجنس المسجل لا تسمح المنصه بتزوير الجنس وستحظر حسابك اذا وجدت  لا تسمح المنصه للمستخدمين بالانخراط في عمليات الاحتيال والخداع في المحادثات الخاصه وسيتم حظر المستخدمين الذين يرتكبون الاحتيال علي المنصه او يتسببون في خسائر اقتصاديه للمستخدمين الأخرين بمجرد العثور عليهم يرجي عدم حث اطرف الأخر علي تحويل الأموال لأسباب مثل الاستثمار او صعوبات الخياى او العائليه فبمجرد اكتشاف ذالك ستعاقب بشدة   اخيرا في TIMO لدينا فريق مراجعه لمرافقتة الرجال والنساء غير المتزوجين علي المنصه وخلق بيئة مواعدة جميلة ودافئة هي رؤيتنا!)
+</div>
+
+<button onclick="closeSafety()">إغلاق</button>
+</div>
 </div>
 
 <script>
 function hoverGender(type){
-const bg=document.getElementById("genderBg");
-bg.src= type==="male" ? "images/hero-male.jpg" : "images/hero-female.jpg";
+document.getElementById("genderBg").src =
+type==="male" ? "images/hero-male.jpg" : "images/hero-female.jpg";
 }
 
 function enterSite(type){
@@ -215,6 +297,14 @@ document.getElementById("genderGate").style.display="none";
 document.getElementById("site").classList.remove("hidden");
 document.getElementById("heroImg").src =
 type==="male" ? "images/hero-male.jpg" : "images/hero-female.jpg";
+}
+
+function openSafety(){
+document.getElementById("safetyPopup").classList.remove("hidden");
+}
+
+function closeSafety(){
+document.getElementById("safetyPopup").classList.add("hidden");
 }
 </script>
 
