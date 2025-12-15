@@ -6,24 +6,22 @@
 <title>TIMO CLUB</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
 body {
+  margin: 0;
   background: #000;
   color: #fff;
+  font-family: Arial, sans-serif;
 }
 
 /* شاشة الاختيار */
 #genderScreen {
   position: fixed;
   inset: 0;
-  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)),
-              url("images/male.jpg") center/cover no-repeat;
+  background:
+    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    url("BASE64_IMAGE_HERE");
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,52 +30,37 @@ body {
   z-index: 999;
 }
 
-#genderScreen h2 {
-  font-size: 26px;
-}
-
-.gender-btn {
+button {
   width: 220px;
-  padding: 15px;
+  padding: 16px;
   font-size: 20px;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   cursor: pointer;
   color: #fff;
 }
 
-.male {
-  background: #3b82f6;
-}
+.male { background: #2563eb; }
+.female { background: #db2777; }
 
-.female {
-  background: #ec4899;
-}
-
-/* الهيدر */
 header {
-  height: 65vh;
+  height: 70vh;
+  background:
+    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    url("BASE64_IMAGE_HERE");
   background-size: cover;
   background-position: center;
 }
 
-/* المحتوى */
 .content {
   padding: 20px;
   text-align: center;
 }
 
-.content h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-/* الاشتراكات */
 .subs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
-  margin-top: 20px;
 }
 
 .subs a {
@@ -93,17 +76,14 @@ header {
 
 <body>
 
-<!-- شاشة الاختيار -->
 <div id="genderScreen">
   <h2>اختار النوع</h2>
-  <button class="gender-btn male" onclick="selectGender('male')">ذكر</button>
-  <button class="gender-btn female" onclick="selectGender('female')">أنثى</button>
+  <button class="male" onclick="enter()">ذكر</button>
+  <button class="female" onclick="enter()">أنثى</button>
 </div>
 
-<!-- الهيدر -->
-<header id="hero"></header>
+<header></header>
 
-<!-- المحتوى -->
 <div class="content">
   <h1>TIMO CLUB</h1>
   <p>خدمة عملاء رسمية لتفعيل الاشتراكات</p>
@@ -112,23 +92,12 @@ header {
     <a href="https://wa.me/201034381180">شهر</a>
     <a href="https://wa.me/201034381180">شهرين</a>
     <a href="https://wa.me/201034381180">3 شهور</a>
-    <a href="https://wa.me/201034381180">5 شهور</a>
     <a href="https://wa.me/201034381180">6 شهور</a>
-    <a href="https://wa.me/201034381180">12 شهر</a>
-    <a href="https://wa.me/201034381180">اشتراك مميز</a>
   </div>
 </div>
 
 <script>
-function selectGender(type) {
-  const hero = document.getElementById("hero");
-
-  if (type === "male") {
-    hero.style.backgroundImage = "url('images/male.jpg')";
-  } else {
-    hero.style.backgroundImage = "url('images/female.jpg')";
-  }
-
+function enter() {
   document.getElementById("genderScreen").style.display = "none";
 }
 </script>
