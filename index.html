@@ -1,207 +1,137 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TIMO CLUB</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIMO CLUB</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-    body {
-      background: #000;
-      color: #fff;
-      overflow-x: hidden;
-    }
+body {
+  background: #000;
+  color: #fff;
+}
 
-    /* =====================
-       صفحة الاختيار
-    ===================== */
-    .gender-screen {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
+/* شاشة الاختيار */
+#genderScreen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)),
+              url("images/male.jpg") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 999;
+}
 
-    .gender-box {
-      background: rgba(255,255,255,0.08);
-      padding: 30px;
-      border-radius: 25px;
-      text-align: center;
-      width: 90%;
-      max-width: 350px;
-    }
+#genderScreen h2 {
+  font-size: 26px;
+}
 
-    .gender-box h2 {
-      margin-bottom: 25px;
-      font-size: 22px;
-    }
+.gender-btn {
+  width: 220px;
+  padding: 15px;
+  font-size: 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #fff;
+}
 
-    .gender-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+.male {
+  background: #3b82f6;
+}
 
-    .gender-buttons button {
-      padding: 18px;
-      font-size: 20px;
-      border: none;
-      border-radius: 18px;
-      color: #fff;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+.female {
+  background: #ec4899;
+}
 
-    .male {
-      background: linear-gradient(135deg, #1e90ff, #00bfff);
-    }
+/* الهيدر */
+header {
+  height: 65vh;
+  background-size: cover;
+  background-position: center;
+}
 
-    .female {
-      background: linear-gradient(135deg, #ff69b4, #ff1493);
-    }
+/* المحتوى */
+.content {
+  padding: 20px;
+  text-align: center;
+}
 
-    .gender-buttons button:hover {
-      transform: scale(1.05);
-    }
+.content h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
 
-    /* =====================
-       الهيدر (الصورة)
-    ===================== */
-    .hero {
-      width: 100%;
-      height: 65vh;
-      background-size: cover;
-      background-position: center;
-    }
+/* الاشتراكات */
+.subs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
 
-    /* =====================
-       المحتوى
-    ===================== */
-    .content {
-      padding: 25px;
-      text-align: center;
-    }
-
-    .content h1 {
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
-
-    .content p {
-      font-size: 16px;
-      margin-bottom: 8px;
-      opacity: 0.9;
-    }
-
-    /* =====================
-       الاشتراكات
-    ===================== */
-    .subscriptions {
-      padding: 25px;
-      text-align: center;
-    }
-
-    .subscriptions h2 {
-      margin-bottom: 20px;
-      font-size: 22px;
-    }
-
-    .subs-buttons {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-
-    .subs-buttons a {
-      text-decoration: none;
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      color: #fff;
-      padding: 16px 10px;
-      border-radius: 18px;
-      font-size: 17px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .subs-buttons a:hover {
-      transform: scale(1.05);
-      opacity: 0.95;
-    }
-
-    .note {
-      margin-top: 18px;
-      font-size: 14px;
-      opacity: 0.8;
-    }
-  </style>
+.subs a {
+  background: #22c55e;
+  padding: 14px;
+  border-radius: 10px;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- صفحة الاختيار -->
-  <div class="gender-screen" id="genderScreen">
-    <div class="gender-box">
-      <h2>اختر النوع</h2>
-      <div class="gender-buttons">
-        <button class="male" onclick="enterSite('male')">ذكر</button>
-        <button class="female" onclick="enterSite('female')">أنثى</button>
-      </div>
-    </div>
+<!-- شاشة الاختيار -->
+<div id="genderScreen">
+  <h2>اختار النوع</h2>
+  <button class="gender-btn male" onclick="selectGender('male')">ذكر</button>
+  <button class="gender-btn female" onclick="selectGender('female')">أنثى</button>
+</div>
+
+<!-- الهيدر -->
+<header id="hero"></header>
+
+<!-- المحتوى -->
+<div class="content">
+  <h1>TIMO CLUB</h1>
+  <p>خدمة عملاء رسمية لتفعيل الاشتراكات</p>
+
+  <div class="subs">
+    <a href="https://wa.me/201034381180">شهر</a>
+    <a href="https://wa.me/201034381180">شهرين</a>
+    <a href="https://wa.me/201034381180">3 شهور</a>
+    <a href="https://wa.me/201034381180">5 شهور</a>
+    <a href="https://wa.me/201034381180">6 شهور</a>
+    <a href="https://wa.me/201034381180">12 شهر</a>
+    <a href="https://wa.me/201034381180">اشتراك مميز</a>
   </div>
+</div>
 
-  <!-- الهيدر -->
-  <div class="hero" id="hero"></div>
+<script>
+function selectGender(type) {
+  const hero = document.getElementById("hero");
 
-  <!-- المحتوى -->
-  <div class="content">
-    <h1>TIMO CLUB EGYPT</h1>
-    <p>مرحباً بك في TIMO CLUB</p>
-    <p>خدمة عملاء رسمية لتفعيل الاشتراكات</p>
-    <p>خدمة 24 ساعة</p>
-  </div>
+  if (type === "male") {
+    hero.style.backgroundImage = "url('images/male.jpg')";
+  } else {
+    hero.style.backgroundImage = "url('images/female.jpg')";
+  }
 
-  <!-- الاشتراكات -->
-  <div class="subscriptions">
-    <h2>الاشتراكات المتاحة</h2>
-
-    <div class="subs-buttons">
-      <a href="https://wa.me/201034381180" target="_blank">شهر</a>
-      <a href="https://wa.me/201034381180" target="_blank">شهرين</a>
-      <a href="https://wa.me/201034381180" target="_blank">3 شهور</a>
-      <a href="https://wa.me/201034381180" target="_blank">5 شهور</a>
-      <a href="https://wa.me/201034381180" target="_blank">6 شهور</a>
-      <a href="https://wa.me/201034381180" target="_blank">12 شهر</a>
-      <a href="https://wa.me/201034381180" target="_blank">اشتراك مميز</a>
-    </div>
-
-    <p class="note">لكل حساب اشتراك واحد فقط</p>
-  </div>
-
-  <!-- JavaScript -->
-  <script>
-    function enterSite(type) {
-      const screen = document.getElementById("genderScreen");
-      const hero = document.getElementById("hero");
-
-      if (type === "male") {
-        hero.style.backgroundImage = "url('images/male.jpg')";
-      } else {
-        hero.style.backgroundImage = "url('images/female.jpg')";
-      }
-
-      screen.style.display = "none";
-    }
-  </script>
+  document.getElementById("genderScreen").style.display = "none";
+}
+</script>
 
 </body>
 </html>
