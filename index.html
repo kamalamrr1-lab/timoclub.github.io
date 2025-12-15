@@ -1,224 +1,184 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>TIMO CLUB</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIMO CLUB</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-    body {
-      background: #000;
-      color: #fff;
-    }
+/* خلفية عامة */
+body {
+  background: #000;
+  color: #fff;
+}
 
-    /* ===== صفحة الاختيار ===== */
-    #gender-gate {
-      position: fixed;
-      inset: 0;
-      background: url("images/hero-female.jpg") center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+/* صفحة الاختيار */
+#gender-gate {
+  height: 100vh;
+  background: url("images/hero-female.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    #gender-gate::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-    }
+.gate-overlay {
+  background: rgba(0,0,0,0.55);
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+}
 
-    .gate-box {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-    }
+.gate-overlay h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+}
 
-    .gate-box h2 {
-      margin-bottom: 25px;
-      font-size: 26px;
-    }
+.gate-buttons button {
+  font-size: 20px;
+  padding: 14px 30px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #fff;
+}
 
-    .gate-buttons {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-    }
+.btn-male {
+  background: linear-gradient(135deg,#3a7bd5,#00d2ff);
+}
 
-    .gate-buttons button {
-      padding: 14px 30px;
-      font-size: 18px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      color: #fff;
-      background: linear-gradient(135deg,#ff7eb3,#8e44ad);
-      transition: transform 0.2s, opacity 0.2s;
-    }
+.btn-female {
+  background: linear-gradient(135deg,#ff758c,#ff7eb3);
+}
 
-    .gate-buttons button:hover {
-      transform: scale(1.05);
-      opacity: 0.9;
-    }
+/* محتوى الموقع */
+#siteContent {
+  display: none;
+}
 
-    /* ===== محتوى الموقع ===== */
-    #site-content {
-      display: none;
-    }
+/* صورة الهيرو */
+.hero img {
+  width: 100%;
+  height: 75vh;
+  object-fit: cover;
+  display: block;
+}
 
-    .hero {
-      width: 100%;
-      height: 85vh;
-      background-position: center;
-      background-size: cover;
-      position: relative;
-    }
+/* محتوى تحت الصورة */
+.hero-content {
+  text-align: center;
+  padding: 30px 20px;
+}
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.35);
-    }
+.hero-content h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
 
-    .hero-content {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
-    }
+/* الاشتراكات */
+.subscriptions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 30px;
+}
 
-    .hero-content h1 {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
+.plan {
+  background: #111;
+  border-radius: 16px;
+  padding: 20px;
+  width: 180px;
+  text-align: center;
+  border: 1px solid #333;
+}
 
-    .hero-content p {
-      font-size: 18px;
-      opacity: 0.9;
-    }
+.plan h3 {
+  margin-bottom: 10px;
+}
 
-    /* ===== الاشتراكات ===== */
-    .plans {
-      padding: 50px 20px;
-      background: #0f0f0f;
-      text-align: center;
-    }
-
-    .plans h2 {
-      font-size: 30px;
-      margin-bottom: 30px;
-    }
-
-    .plan-cards {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .plan {
-      background: #1c1c1c;
-      border-radius: 20px;
-      padding: 30px;
-      width: 260px;
-    }
-
-    .plan h3 {
-      margin-bottom: 15px;
-      font-size: 22px;
-    }
-
-    .plan p {
-      margin-bottom: 20px;
-      opacity: 0.8;
-    }
-
-    .plan button {
-      padding: 12px 25px;
-      border: none;
-      border-radius: 25px;
-      background: linear-gradient(135deg,#ff7eb3,#8e44ad);
-      color: #fff;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    @media (max-width: 600px) {
-      .hero-content h1 {
-        font-size: 30px;
-      }
-    }
-  </style>
+.plan button {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #6c63ff;
+  color: #fff;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- صفحة الاختيار -->
-  <div id="gender-gate">
-    <div class="gate-box">
-      <h2>اختر</h2>
-      <div class="gate-buttons">
-        <button onclick="enterSite('male')">ذكر</button>
-        <button onclick="enterSite('female')">أنثى</button>
-      </div>
+<!-- صفحة الاختيار -->
+<div id="gender-gate">
+  <div class="gate-overlay">
+    <h2>اختر</h2>
+    <div class="gate-buttons">
+      <button class="btn-male" onclick="enterSite('male')">ذكر</button>
+      <button class="btn-female" onclick="enterSite('female')">أنثى</button>
     </div>
   </div>
+</div>
 
-  <!-- محتوى الموقع -->
-  <div id="site-content">
-    <div class="hero" id="hero"></div>
-
-    <div class="hero-content">
-      <h1>TIMO CLUB</h1>
-      <p>أفضل تجربة تعارف واشتراكات مميزة</p>
-    </div>
-
-    <section class="plans">
-      <h2>خطط الاشتراك</h2>
-
-      <div class="plan-cards">
-        <div class="plan">
-          <h3>الخطة العادية</h3>
-          <p>مميزات أساسية</p>
-          <button>اشترك</button>
-        </div>
-
-        <div class="plan">
-          <h3>الخطة المميزة</h3>
-          <p>كل المميزات + إضافات</p>
-          <button>اشترك</button>
-        </div>
-      </div>
-    </section>
+<!-- محتوى الموقع -->
+<div id="siteContent">
+  <div class="hero">
+    <img id="heroImage" src="" alt="TIMO CLUB">
   </div>
 
-  <script>
-    function enterSite(type) {
-      document.getElementById("gender-gate").style.display = "none";
-      document.getElementById("site-content").style.display = "block";
+  <div class="hero-content">
+    <h1>TIMO CLUB</h1>
+    <p>أهلاً بيك في TIMO CLUB</p>
+  </div>
 
-      const hero = document.getElementById("hero");
+  <div class="subscriptions">
+    <div class="plan">
+      <h3>شهر</h3>
+      <p>30 يوم</p>
+      <button>اشترك</button>
+    </div>
+    <div class="plan">
+      <h3>3 شهور</h3>
+      <p>90 يوم</p>
+      <button>اشترك</button>
+    </div>
+    <div class="plan">
+      <h3>6 شهور</h3>
+      <p>180 يوم</p>
+      <button>اشترك</button>
+    </div>
+    <div class="plan">
+      <h3>12 شهر</h3>
+      <p>سنة كاملة</p>
+      <button>اشترك</button>
+    </div>
+  </div>
+</div>
 
-      if (type === "male") {
-        hero.style.backgroundImage = "url('images/hero-male.jpg')";
-      } else {
-        hero.style.backgroundImage = "url('images/hero-female.jpg')";
-      }
-    }
-  </script>
+<script>
+function enterSite(type) {
+  document.getElementById("gender-gate").style.display = "none";
+  document.getElementById("siteContent").style.display = "block";
+
+  const heroImage = document.getElementById("heroImage");
+
+  if (type === "male") {
+    heroImage.src = "images/hero-male.jpg";
+  } else {
+    heroImage.src = "images/hero-female.jpg";
+  }
+}
+</script>
 
 </body>
 </html>
